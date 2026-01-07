@@ -48,6 +48,28 @@ This pattern is commonly used in:
 - IoT backends
 - Healthcare and financial data processing systems
 
+
+
+---
+## Lambda Processing Logic
+
+The Lambda function is triggered automatically by S3 `ObjectCreated` events.
+
+### Behavior
+- Extracts bucket name and object key from the event
+- Simulates corruption detection using filename rules
+- Copies failed files into a quarantine prefix
+- Allows healthy files to continue processing
+- Logs every step for observability
+
+This logic demonstrates how production systems isolate bad data without stopping the pipeline.
+
+
+
+
+
+
+
 ---
 
 ## Failure Handling (Quarantine Logic)
